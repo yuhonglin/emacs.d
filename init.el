@@ -1,0 +1,110 @@
+(load-file "~/.emacs.d/custom.el")
+
+(add-to-list 'load-path "~/.emacs.d/use-package/")
+(eval-when-compile
+  (require 'use-package))
+(require 'bind-key)
+
+(require 'package)
+(setq package-archives '(("melpa-stable" . "http://melpa.milkbox.net/packages/")
+			 ("melpa" . "https://melpa.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("gnu" . "https://elpa.gnu.org/packages/")
+                         ("elpy" . "https://jorgenschaefer.github.io/packages/")))
+
+
+(package-initialize)
+
+(use-package cmake-mode
+  :ensure t)
+
+(use-package flycheck
+  :config
+  (add-hook 'flycheck-mode-hook #'flycheck-irony-setup)
+  :ensure t)
+
+(use-package company
+  :config
+  (global-company-mode)
+  (setq company-idle-delay 0)
+  :ensure t)
+
+(use-package tex-site
+  :ensure auctex)
+
+(use-package magit
+  :ensure t)
+
+(use-package yasnippet
+  :config
+  (yas-reload-all)
+  (yas-global-mode)
+  :bind
+  (
+   :map yas-minor-mode-map
+   ("C-c C-y" . yas-expand))
+  :ensure t)
+
+(use-package helm
+  :config
+  (helm-mode 1)
+  (global-set-key (kbd "C-x f") 'helm-recentf)
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+  (helm-autoresize-mode)
+  (setq helm-autoresize-min-height 10
+	helm-autoresize-max-height 20)
+  :ensure t)
+
+(use-package irony
+  :ensure t
+  :bind
+  (("M-l" . company-complete))
+  :config
+  (progn
+    (use-package company-irony
+      :ensure t
+      :config
+      (add-to-list 'company-backends 'company-irony))
+    (add-hook 'irony-mode-hook 'electric-pair-mode)
+    (add-hook 'c++-mode-hook 'irony-mode)
+    (add-hook 'c-mode-hook 'irony-mode)
+    (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+    (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)))
+
+(use-package flycheck-irony
+  :ensure t)
+
+(use-package irony-eldoc
+  :config
+  (add-hook 'irony-mode-hook 'irony-eldoc)
+  :ensure t)
+
+(use-package ess
+  :config
+  (setq inferior-R-args "--no-restore-history --no-save")
+  :ensure t)
+
+(use-package elpy
+  :config
+  (elpy-enable)
+  :ensure t)
+
+(use-package web-mode
+  :ensure t)
+
+(use-package clang-format
+  :config
+  (add-hook 'c++-mode-hook '(lambda ()
+			      (local-set-key (kbd "C-c C-c") 'clang-format)))
+  (if (string-equal system-type "darwin")
+      (setq clang-format-executable "/opt/local/libexec/llvm-3.7/bin/clang-format"))
+  :ensure t)
+
+(use-package stan-mode
+  :ensure t)
+(use-package stan-snippets
+  :ensure t)
+
+(use-package request
+  :ensure t)
