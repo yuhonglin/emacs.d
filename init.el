@@ -108,3 +108,8 @@
 
 (use-package request
   :ensure t)
+
+(use-package moe-theme
+  :config
+  (load-theme 'moe-dark t)
+  :ensure t)
