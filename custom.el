@@ -5,6 +5,8 @@
     (setq home-directory "/Users/honglinyu/")
   (setq home-directory "/home/honglin/"))
 
+(load-theme 'tango-dark)
+
 (setq inhibit-startup-message t)
 
 (toggle-scroll-bar -1)
@@ -15,7 +17,7 @@
 (require 'recentf)
 (recentf-mode 1)
 
-(setq comint-prompt-read-only t)
+(setq comint-prompt-read-only nil)
 ;; multi-shell
 (setq shellnumber 0)
 (defun newshell () (interactive) (progn 

@@ -108,23 +108,14 @@
   :ensure t)
 
 (use-package request
-  :ensure t)
-
-(use-package moe-theme
+  :ensure t
   :config
-  (load-theme 'moe-dark t)
-  :ensure t)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("dbb643699e18b5691a8baff34c29d709a3ff9787f09cdae58d3c1bc085b63c25" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+  (eval-after-load "helm-gtags"
+    (progn
+      (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
+      (define-key helm-gtags-mode-map (kbd "M-r") 'helm-gtags-find-rtag)
+      (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-find-symbol)
+      (define-key helm-gtags-mode-map (kbd "M-g M-p") 'helm-gtags-parse-file)
+      (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
+      (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
+      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack))))
