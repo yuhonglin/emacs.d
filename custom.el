@@ -70,3 +70,17 @@
 ;; shrink and enlarge window
 (global-set-key (kbd "M-,") 'shrink-window)
 (global-set-key (kbd "M-.") 'enlarge-window)
+
+; open current folder with nautilus
+(defun open-folder-with-xdg ()
+ "open current folder with nautilus"
+ (interactive)
+ (shell-command (concat "nautilus " (file-name-as-directory "."))))
+(global-set-key (kbd "C-c i") 'open-folder-with-xdg)
+
+; open current folder with gnome-terminal
+(defun open-folder-with-terminal ()
+ "open current folder with nautilus"
+ (interactive)
+ (shell-command (concat "gnome-terminal --working-directory " default-directory)))
+(global-set-key (kbd "C-c t") 'open-folder-with-terminal)
