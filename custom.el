@@ -3,7 +3,7 @@
 
 (if (string-equal system-type "darwin")
     (setq home-directory "/Users/honglinyu/")
-  (setq home-directory "/home/honglin/"))
+  (setq home-directory "/home/lin/"))
 
 (load-theme 'tango-dark)
 
@@ -84,3 +84,30 @@
  (interactive)
  (shell-command (concat "gnome-terminal --working-directory " default-directory)))
 (global-set-key (kbd "C-c t") 'open-folder-with-terminal)
+
+
+;; global key map                                                               
+(defvar my-keys-minor-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "C-c t") 'open-folder-with-terminal)
+    (define-key map "\C-x." 'newshell)
+    (define-key map [f11] 'my-fullscreen)
+    ;; window movements                                                         
+    (define-key map (kbd "C-M-p") 'windmove-up)
+    (define-key map (kbd "C-M-b") 'windmove-left)
+    (define-key map (kbd "C-M-n") 'windmove-down)
+    (define-key map (kbd "C-M-f") 'windmove-right)
+    ;; shrink and enlarge window                                                
+    (define-key map (kbd "M-,") 'shrink-window)
+    (define-key map (kbd "M-.") 'enlarge-window)
+    ;; open current folder with nautilus                                        
+    (define-key map (kbd "C-c i") 'open-folder-with-xdg)
+    map)
+  "my-keys-minor-mode keymap.")
+
+(define-minor-mode my-keys-minor-mode
+  "A minor mode so that my key settings override annoying major modes."
+  :init-value t
+  :lighter " my-keys")
+
+(my-keys-minor-mode 1)

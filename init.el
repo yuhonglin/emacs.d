@@ -108,14 +108,22 @@
   :ensure t)
 
 (use-package request
+  :ensure t)
+
+(use-package org
   :ensure t
   :config
-  (eval-after-load "helm-gtags"
-    (progn
-      (define-key helm-gtags-mode-map (kbd "M-t") 'helm-gtags-find-tag)
-      (define-key helm-gtags-mode-map (kbd "M-r") 'helm-gtags-find-rtag)
-      (define-key helm-gtags-mode-map (kbd "M-s") 'helm-gtags-find-symbol)
-      (define-key helm-gtags-mode-map (kbd "M-g M-p") 'helm-gtags-parse-file)
-      (define-key helm-gtags-mode-map (kbd "C-c <") 'helm-gtags-previous-history)
-      (define-key helm-gtags-mode-map (kbd "C-c >") 'helm-gtags-next-history)
-      (define-key helm-gtags-mode-map (kbd "M-,") 'helm-gtags-pop-stack))))
+  (setq org-hide-emphasis-markers t)
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package org-bullets
+  :ensure t)
+
+(use-package s
+  :ensure t)
+
+
+(add-to-list 'load-path "~/.emacs.d/matlab-mode/")
+(require 'matlab-mode)
+(matlab-mode-common-setup)
+(setq matlab-server-executable "/home/lin/local/MatlabR2015a/bin/matlab")
