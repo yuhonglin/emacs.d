@@ -66,7 +66,6 @@
       :ensure t
       :config
       (add-to-list 'company-backends 'company-irony))
-    (add-hook 'irony-mode-hook 'electric-pair-mode)
     (add-hook 'c++-mode-hook 'irony-mode)
     (add-hook 'c-mode-hook 'irony-mode)
     (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
