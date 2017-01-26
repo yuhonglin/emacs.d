@@ -39,6 +39,7 @@
   :config
   (yas-reload-all)
   (yas-global-mode)
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets/"))
   :bind
   (
    :map yas-minor-mode-map
