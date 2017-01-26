@@ -1,9 +1,11 @@
 (setq user-full-name "Honglin Yu")
 (setq user-mail-address "honglin.yu@anu.edu.au")
 
-(if (string-equal system-type "darwin")
-    (setq home-directory "/Users/honglinyu/")
-  (setq home-directory "/home/lin/"))
+(cond
+ ((string-equal (system-name) "RSFAS-22673")
+  (setq home-directory "/Users/honglinyu/"))
+ ((string-equal (system-name) "lin-ThinkPad-W530")
+  (setq home-directory "/home/lin/")))
 
 (load-theme 'tango-dark)
 
