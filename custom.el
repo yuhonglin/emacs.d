@@ -113,3 +113,6 @@
   :lighter " my-keys")
 
 (my-keys-minor-mode 1)
+
+;; auto reload pdf files
+(add-hook 'doc-view-mode-hook 'auto-revert-mode)
