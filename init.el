@@ -86,6 +86,16 @@
   (require 'ess-jags-d)
   :ensure t)
 
+(use-package selected
+  :ensure t
+  :commands selected-minor-mode
+  :bind (:map selected-keymap
+              ("q" . selected-off)
+              ("u" . upcase-region)
+              ("d" . downcase-region)
+              ("w" . count-words-region)
+              ("m" . apply-macro-to-region-lines)))
+
 (use-package elpy
   :config
   (elpy-enable)
@@ -127,3 +137,4 @@
 (require 'matlab-mode)
 (matlab-mode-common-setup)
 (setq matlab-server-executable "/home/lin/local/MatlabR2015a/bin/matlab")
+(put 'upcase-region 'disabled nil)
