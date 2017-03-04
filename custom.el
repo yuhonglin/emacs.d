@@ -21,6 +21,9 @@
 
 (setq comint-prompt-read-only nil)
 ;; multi-shell
+(if (not (version< emacs-version "25"))
+    (add-to-list 'display-buffer-alist
+     '("^\\*shell\\*$" . (display-buffer-same-window))))
 (setq shellnumber 0)
 (defun newshell () (interactive) (progn 
                                           (shell)
