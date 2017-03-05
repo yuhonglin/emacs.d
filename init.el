@@ -145,7 +145,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-bullets request stan-snippets stan-mode clang-format web-mode elpy selected ess irony-eldoc flycheck-irony company-irony irony helm yasnippet magit auctex company flycheck cmake-mode))))
+    (jdee company-emacs-eclim eclim emacs-eclim org-bullets request stan-snippets stan-mode clang-format web-mode elpy selected ess irony-eldoc flycheck-irony company-irony irony helm yasnippet magit auctex company flycheck cmake-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
