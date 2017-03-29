@@ -132,6 +132,16 @@
 (use-package s
   :ensure t)
 
+;; jdee
+(use-package cedet
+  :ensure t)
+(use-package ecb
+  :ensure t)
+(use-package jdee
+  :ensure t)
+(setq jdee-server-dir "~/.emacs.d/jdee-server/target/")
+
+
 
 (add-to-list 'load-path "~/.emacs.d/matlab-mode/")
 (require 'matlab-mode)
@@ -145,7 +155,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (jdee company-emacs-eclim eclim emacs-eclim org-bullets request stan-snippets stan-mode clang-format web-mode elpy selected ess irony-eldoc flycheck-irony company-irony irony helm yasnippet magit auctex company flycheck cmake-mode))))
+    (company-jdee ecb jdee company-emacs-eclim eclim emacs-eclim org-bullets request stan-snippets stan-mode clang-format web-mode elpy selected ess irony-eldoc flycheck-irony company-irony irony helm yasnippet magit auctex company flycheck cmake-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
