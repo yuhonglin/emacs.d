@@ -132,16 +132,6 @@
 (use-package s
   :ensure t)
 
-;; jdee
-(use-package cedet
-  :ensure t)
-(use-package ecb
-  :ensure t)
-(use-package jdee
-  :ensure t)
-(setq jdee-server-dir "~/.emacs.d/jdee-server/target/")
-
-
 
 (add-to-list 'load-path "~/.emacs.d/matlab-mode/")
 (require 'matlab-mode)
